@@ -17,11 +17,10 @@ import Footer from './components/Footer'
 export default function App() {
   return (
     <>
+      <SplashCursor VELOCITY_DISSIPATION={3} SPLAT_FORCE={3500} COLOR_UPDATE_SPEED={18} COLOR="#ffffff" RAINBOW_MODE={false} />
+
       {/* Preloader (auto-hides after ~2s) */}
       <Preloader />
-
-      {/* Custom cursor glow (desktop only) */}
-      <SplashCursor />
 
       {/* Navigation */}
       <Navbar />
