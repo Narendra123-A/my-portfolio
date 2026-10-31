@@ -1,16 +1,41 @@
-# React + Vite
+# Ambati Narendra Kumar Reddy — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern, single-page developer portfolio built with **React 19**, **Vite**, and **Tailwind CSS 4**.
 
-Currently, two official plugins are available:
+Built during the placement training program at [TAP Academy](https://thetapacademy.com/) (full-stack development, AI and augmented reality training).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
 
-## React Compiler
+- React 19 + Vite
+- Tailwind CSS 4 (`@tailwindcss/vite`)
+- Framer Motion (preloader & animations)
+- AOS (scroll reveal)
+- EmailJS (contact form)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Quick Start
 
-## Expanding the Oxlint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Contact Form Setup
+
+Create a `.env.local` file with your [EmailJS](https://www.emailjs.com/) credentials:
+
+```env
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+```
+
+## Build for Production
+
+```bash
+npm run build
+npm run preview
+```
+
+## License
+
+© 2026 Ambati Narendra Kumar Reddy
