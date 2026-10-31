@@ -1,33 +1,45 @@
-// Contact.jsx — contact form powered by EmailJS + direct contact info
+// Contact.jsx — contact form that opens pre-filled email client + direct contact info
 import { useRef, useState } from 'react'
-import emailjs from '@emailjs/browser'
-import { personalInfo, emailjsConfig, socialLinks } from '../data/portfolioData'
+import { personalInfo, socialLinks } from '../data/portfolioData'
 
 export default function Contact() {
   const formRef = useRef(null)
-  const [status, setStatus] = useState('idle') // idle | sending | sent | error
+  const [status, setStatus] = useState('idle') // idle | sending | sent
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setStatus('sending')
 
-    emailjs
-      .sendForm(
-        emailjsConfig.serviceId,
-        emailjsConfig.templateId,
-        formRef.current,
-        emailjsConfig.publicKey
-      )
-      .then(() => {
-        setStatus('sent')
-        formRef.current.reset()
-        // Reset after 5 seconds
-        setTimeout(() => setStatus('idle'), 5000)
-      })
-      .catch(() => {
-        setStatus('error')
-        setTimeout(() => setStatus('idle'), 5000)
-      })
+    const form = formRef.current
+    if (!form) return
+
+    const name = form.user_name.value.trim()
+    const email = form.user_email.value.trim()
+    const subjectInput = form.subject.value.trim()
+    const message = form.message.value.trim()
+
+    // Format subject and body matching the email layout
+    const emailSubject = subjectInput
+      ? `Portfolio Contact: ${subjectInput} from ${name}`
+      : `Portfolio Contact from ${name}`
+
+    const emailBody = `From: ${name}\nEmail: ${email}\n\n${message}`
+
+    const mailtoUrl = `mailto:${personalInfo.emails.primary}?subject=${encodeURIComponent(
+      emailSubject
+    )}&body=${encodeURIComponent(emailBody)}`
+
+    // Brief timeout so the user sees "Sending…" before the email client opens
+    setTimeout(() => {
+      window.location.href = mailtoUrl
+      setStatus('sent')
+      form.reset()
+
+      // Reset button state after 4 seconds
+      setTimeout(() => {
+        setStatus('idle')
+      }, 4000)
+    }, 600)
   }
 
   return (
@@ -36,7 +48,7 @@ export default function Contact() {
 
         {/* Left — contact info */}
         <div data-aos="fade-right">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-[#ff2a2a] text-xs font-bold uppercase tracking-widest mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 text-[#f71800] text-xs font-bold uppercase tracking-widest mb-4">
             Get In Touch
           </span>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
@@ -123,7 +135,7 @@ export default function Contact() {
                 name="user_name"
                 required
                 placeholder="John Doe"
-                className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-[#ff2a2a] transition-colors"
+                className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-[#f71800] transition-colors"
               />
             </div>
 
@@ -138,7 +150,7 @@ export default function Contact() {
                 name="user_email"
                 required
                 placeholder="john@example.com"
-                className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-[#ff2a2a] transition-colors"
+                className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-[#f71800] transition-colors"
               />
             </div>
 
@@ -153,7 +165,7 @@ export default function Contact() {
                 name="subject"
                 required
                 placeholder="Hiring Inquiry"
-                className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-[#ff2a2a] transition-colors"
+                className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-[#f71800] transition-colors"
               />
             </div>
 
@@ -168,7 +180,7 @@ export default function Contact() {
                 required
                 rows={5}
                 placeholder="Tell me about the opportunity…"
-                className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-[#ff2a2a] transition-colors resize-none"
+                className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:border-[#f71800] transition-colors resize-none"
               />
             </div>
 
@@ -178,18 +190,14 @@ export default function Contact() {
               disabled={status === 'sending'}
               className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
                 status === 'sent'
-                  ? 'bg-green-500 text-white'
-                  : status === 'error'
-                  ? 'bg-red-800 text-white'
-                  : 'bg-[#ff2a2a] text-white hover:bg-[#e02424] hover:shadow-[0_0_30px_rgba(255,42,42,0.3)]'
+                  ? 'bg-green-600 text-white shadow-[0_0_25px_rgba(22,163,74,0.4)]'
+                  : 'bg-[#f71800] text-white hover:bg-[#d41500] hover:shadow-[0_0_30px_rgba(247,24,0,0.35)]'
               } disabled:opacity-60 disabled:cursor-not-allowed`}
             >
               {status === 'sending'
                 ? 'Sending…'
                 : status === 'sent'
-                ? '✓ Message Sent!'
-                : status === 'error'
-                ? '✗ Failed — Try Again'
+                ? '✓ Opening Email App…'
                 : 'Send Message'}
             </button>
           </form>
