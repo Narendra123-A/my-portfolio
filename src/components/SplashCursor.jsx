@@ -27,7 +27,7 @@ export default function SplashCursor() {
     const animate = () => {
       currentX += (x - currentX) * 0.15
       currentY += (y - currentY) * 0.15
-      cursor.style.transform = `translate(${currentX - 16}px, ${currentY - 16}px)`
+      cursor.style.transform = `translate(${currentX - 128}px, ${currentY - 128}px)`
       raf = requestAnimationFrame(animate)
     }
 
@@ -43,10 +43,10 @@ export default function SplashCursor() {
   return (
     <div
       ref={cursorRef}
-      className="hidden md:block fixed top-0 left-0 z-[9999] pointer-events-none w-8 h-8 rounded-full mix-blend-difference"
+      className="hidden md:block fixed top-0 left-0 z-[9999] pointer-events-none w-64 h-64 rounded-full mix-blend-difference"
       style={{
-        background: 'radial-gradient(circle, rgba(255,42,42,0.6) 0%, transparent 70%)',
-        filter: 'blur(2px)',
+        background: 'radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.3) 30%, transparent 70%)',
+        filter: 'blur(8px)',
         willChange: 'transform',
       }}
     />
