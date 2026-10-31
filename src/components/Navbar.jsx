@@ -25,10 +25,10 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isOpen
-          ? 'bg-[#ff2a2a] py-4'
+          ? 'bg-black py-4'
           : isScrolled
-          ? 'bg-[#0a0a0a]/95 backdrop-blur-md py-3.5 border-b-2 border-[#ff2a2a] shadow-lg shadow-black/50'
-          : 'bg-transparent py-6 border-b border-transparent'
+          ? 'bg-black/95 backdrop-blur-md py-3.5 shadow-lg shadow-black/40'
+          : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
@@ -36,7 +36,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" className="text-white text-xl md:text-2xl font-bold tracking-tight">
           {personalInfo.brandName}
-          <span className="text-[#ff2a2a]">.</span>
+          <span className="text-[#f71800]">.</span>
         </a>
 
         {/* Desktop nav links */}
@@ -49,7 +49,7 @@ export default function Navbar() {
             >
               {link}
               {/* Animated underline */}
-              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-[#ff2a2a] transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-[#f71800] transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </div>
@@ -84,7 +84,7 @@ export default function Navbar() {
 
       {/* Mobile dropdown */}
       <div
-        className={`absolute top-full left-0 w-full bg-[#ff2a2a] shadow-2xl overflow-hidden transition-all duration-300 ${
+        className={`absolute top-full left-0 w-full bg-black/95 backdrop-blur-md shadow-2xl overflow-hidden transition-all duration-300 ${
           isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
@@ -94,7 +94,7 @@ export default function Navbar() {
               key={link}
               href={`#${link.toLowerCase()}`}
               onClick={handleLinkClick}
-              className="text-white font-bold text-lg py-3 border-b border-white/20 hover:text-black transition-colors"
+              className="text-white font-bold text-lg py-3 border-b border-white/10 hover:text-[#f71800] transition-colors"
             >
               {link}
             </a>
@@ -102,7 +102,7 @@ export default function Navbar() {
           <a
             href={hireMeMailto}
             onClick={handleLinkClick}
-            className="mt-4 w-full text-center py-3 rounded-full bg-white text-[#ff2a2a] font-bold text-lg hover:bg-gray-100 transition-colors"
+            className="mt-4 w-full text-center py-3 rounded-full bg-white text-black font-bold text-lg hover:bg-gray-200 transition-colors"
           >
             Hire Me
           </a>

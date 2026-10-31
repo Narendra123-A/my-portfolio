@@ -60,7 +60,7 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className="relative w-full h-screen overflow-hidden bg-[#ff2a2a]">
+    <section id="home" className="relative w-full h-screen overflow-hidden bg-[#f71800]">
 
       {/* Background video — object-contain so the full face is visible */}
       <video
@@ -166,7 +166,7 @@ export default function Hero() {
         <div className="flex flex-col items-center mt-8 md:mt-0" data-aos="zoom-in" data-aos-delay="400">
           <button
             onClick={toggleVideo}
-            className="w-12 h-12 md:w-20 md:h-20 rounded-full border border-white/30 bg-black/20 backdrop-blur flex items-center justify-center hover:scale-110 hover:bg-[#ff2a2a] hover:shadow-[0_0_30px_rgba(255,42,42,0.5)] transition-all duration-300"
+            className="w-12 h-12 md:w-20 md:h-20 rounded-full border border-white/30 bg-black/20 backdrop-blur flex items-center justify-center hover:scale-110 hover:bg-[#f71800] hover:shadow-[0_0_30px_rgba(247,24,0,0.5)] transition-all duration-300"
             aria-label={isPlaying ? 'Pause reel' : 'Play reel'}
           >
             {isPlaying ? (
