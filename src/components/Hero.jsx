@@ -96,7 +96,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-20 max-w-7xl mx-auto px-6 md:px-12 pb-20 md:pb-[8%] flex flex-col md:flex-row justify-end md:justify-between items-start md:items-end">
 
         {/* Left block */}
-        <div className="max-w-3xl lg:max-w-4xl z-20" data-aos="fade-up" data-aos-delay="100">
+        <div className="max-w-2xl z-20" data-aos="fade-up" data-aos-delay="100">
           {/* Mobile social icons */}
           <div className="flex lg:hidden gap-4 mb-4">
             {socialItems.map(({ Icon, href, label }) => (
@@ -115,10 +115,10 @@ export default function Hero() {
 
           {/* Headline */}
           <h1 className="leading-tight">
-            <span className="text-white text-2xl sm:text-3xl md:text-4xl font-bold block mb-2">
+            <span className="text-white text-xl sm:text-2xl md:text-3xl font-bold block mb-1">
               {heroContent.greeting},
             </span>
-            <span className="text-black font-black text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight block md:whitespace-nowrap">
+            <span className="text-black font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight block md:whitespace-nowrap">
               {heroContent.titleHighlight}
             </span>
           </h1>
