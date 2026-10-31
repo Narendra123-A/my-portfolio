@@ -27,14 +27,14 @@ export default function Navbar() {
         isOpen
           ? 'bg-[#ff2a2a] py-4'
           : isScrolled
-          ? 'bg-transparent py-4'
-          : 'bg-transparent py-6'
+          ? 'bg-[#0a0a0a]/95 backdrop-blur-md py-3.5 border-b-2 border-[#ff2a2a] shadow-lg shadow-black/50'
+          : 'bg-transparent py-6 border-b border-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
 
         {/* Logo */}
-        <a href="#" className="text-white text-2xl font-black tracking-tight">
+        <a href="#" className="text-white text-xl md:text-2xl font-bold tracking-tight">
           {personalInfo.brandName}
           <span className="text-[#ff2a2a]">.</span>
         </a>
@@ -45,11 +45,11 @@ export default function Navbar() {
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              className="group relative text-white/80 hover:text-white font-medium transition-colors"
+              className="group relative text-white/90 hover:text-white text-sm md:text-base font-medium transition-colors"
             >
               {link}
               {/* Animated underline */}
-              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-red-500 transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-[#ff2a2a] transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </div>
@@ -57,7 +57,7 @@ export default function Navbar() {
         {/* Hire Me — desktop */}
         <a
           href={hireMeMailto}
-          className="hidden md:block px-6 py-2.5 rounded-full bg-white/10 border border-white/20 text-white font-semibold backdrop-blur-md hover:bg-white/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300"
+          className="hidden md:block px-6 py-2 rounded-full border border-white/25 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold backdrop-blur-sm transition-all duration-200"
         >
           Hire Me
         </a>
