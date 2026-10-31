@@ -114,9 +114,18 @@ export default function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-white text-3xl md:text-5xl font-bold leading-tight">
+          <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
             {heroContent.greeting},<br />
-            <span className="text-black">{heroContent.titleHighlight}</span>
+            <span
+              className="font-extrabold tracking-tight block mt-1"
+              style={{
+                WebkitTextStroke: '1.8px #000000',
+                WebkitTextFillColor: 'transparent',
+                color: 'transparent',
+              }}
+            >
+              {heroContent.titleHighlight}
+            </span>
           </h1>
 
           {/* Subtitle */}
